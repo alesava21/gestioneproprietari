@@ -118,7 +118,8 @@ public class AutomobileServiceImpl implements AutomobileService {
 	}
 
 	@Override
-	public List<Automobile> findAllByCodiceFiscaleProprietarioIniziaCon(String inizialeCodiceFiscale) throws Exception {
+	public List<Automobile> CercaTutteLeAutomobiliTramiteInizialeCodiceFiscaleProprietario(String inizialeCodiceFiscale)
+			throws Exception {
 		EntityManager entityManager = EntityManagerUtil.getEntityManager();
 
 		try {

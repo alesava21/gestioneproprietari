@@ -1,5 +1,6 @@
 package it.prova.gestioneproprietari.service.proprietario;
 
+import java.util.Date;
 import java.util.List;
 
 import it.prova.gestioneproprietari.dao.proprietario.ProprietarioDAO;
@@ -17,7 +18,7 @@ public interface ProprietarioService {
 
 	public void rimuovi(Proprietario idProprietarioInstance) throws Exception;
 
-	public Long contaQuantiProprietariConAutomobileImmatricolataDal(int annoImmatricolazione) throws Exception;
+	public int contaQuantiProprietariConAutomobileImmatricolataDal(Date annoImmatricolazione) throws Exception;
 
 	public void setProprietarioDAO(ProprietarioDAO proprietarioDAO);
 }

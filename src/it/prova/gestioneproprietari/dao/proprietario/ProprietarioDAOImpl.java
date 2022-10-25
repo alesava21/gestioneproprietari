@@ -1,11 +1,14 @@
 package it.prova.gestioneproprietari.dao.proprietario;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
+import javax.swing.JApplet;
 
 import it.prova.gestioneproprietari.model.Proprietario;
+import javassist.expr.NewArray;
 
 public class ProprietarioDAOImpl implements ProprietarioDAO {
 
@@ -59,11 +62,10 @@ public class ProprietarioDAOImpl implements ProprietarioDAO {
 	}
 
 	@Override
-	public Long countProprietariConAutomobileImmatricolataDal(int annoImmatricolazione) throws Exception {
+	public int countProprietariConAutomobileImmatricolataDal(Date annoImmatricolazione) throws Exception {
 		TypedQuery<Long> query = entityManager.createQuery(
 				"select count(p) from Proprietario p join p.automobili a where a.annoImmatricolazione > ?1",
 				Long.class);
-		return query.setParameter(1, annoImmatricolazione).getSingleResult();
+		return query.setParameter(1, new java.sql.Date(annoImmatricolazione.getYear())).getSingleResult().intValue();
 	}
-
 }

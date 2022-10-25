@@ -38,6 +38,11 @@ public class TestProprietarioAutomobile {
 			testRimozioneProprietario(proprietarioService);
 			System.out.println("In tabella Proprietari ci sono" + " " + proprietarioService.listAllProprietari().size()
 					+ " " + "elementi");
+			testCercaTramiteCodiceFiscaleLeAutomobili(automobileService);
+
+			testCercaErroriProprietatiAuto(automobileService);
+
+			testCercaAutomobiliConImmatricolazioneDal(proprietarioService);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -50,7 +55,7 @@ public class TestProprietarioAutomobile {
 
 		System.out.println(".......testInserisciProprietario inizio.............");
 
-		Date dataNascita = new SimpleDateFormat("dd-MM-yyyy").parse("21-05-2002");
+		Date dataNascita = new SimpleDateFormat("dd-MM-yyyy").parse("21-05-2010");
 
 		Proprietario nuovoProprietario = new Proprietario("Alessandro", "Sava", "SVALND02E21Z129A", dataNascita);
 		if (nuovoProprietario.getId() != null)
@@ -159,6 +164,37 @@ public class TestProprietarioAutomobile {
 		proprietarioService.aggiorna(proprietarioDaAggiornare);
 
 		System.out.println(".......testAggiornaProprietario fine.............");
+	}
+
+	private static void testCercaTramiteCodiceFiscaleLeAutomobili(AutomobileService automobileService)
+			throws Exception {
+		System.out.println(".......testCercaTramiteCodiceFiscaleLeAutomobili inizio.............");
+
+		System.out.println(automobileService.CercaTutteLeAutomobiliTramiteInizialeCodiceFiscaleProprietario("sva"));
+
+		System.out.println(".......testCercaTramiteCodiceFiscaleLeAutomobili fine.............");
+
+	}
+
+	private static void testCercaErroriProprietatiAuto(AutomobileService automobileService) throws Exception {
+		System.out.println(".......testCercaErroriProprietatiAuto inizio.............");
+
+		System.out.println(automobileService.findAllErroriProprietariAutomobiliMinorenni());
+
+		System.out.println(".......testCercaErroriProprietatiAuto fine.............");
+
+	}
+
+	private static void testCercaAutomobiliConImmatricolazioneDal(ProprietarioService proprietarioService)
+			throws Exception {
+		System.out.println(".......testCercaAutomobiliConImmatricolazioneDal inizio.............");
+
+		Date dataNascita = new SimpleDateFormat("dd-MM-yyyy").parse("17-05-1956");
+
+		System.out.println(proprietarioService.contaQuantiProprietariConAutomobileImmatricolataDal(dataNascita));
+
+		System.out.println(".......testCercaAutomobiliConImmatricolazioneDal fine.............");
+
 	}
 
 }

@@ -124,7 +124,7 @@ public class Proprietario {
 	@Override
 	public String toString() {
 		return "Proprietario [id=" + id + ", nome=" + nome + ", cognome=" + cognome + ", codiceFiscale=" + codiceFiscale
-				+ ", dataNascita=" + dataNascita + ", automobili=" + automobili + "]";
+				+ ", dataNascita=" + dataNascita +"]";
 	}
 
 }

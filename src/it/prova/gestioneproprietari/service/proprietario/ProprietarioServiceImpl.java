@@ -1,5 +1,6 @@
 package it.prova.gestioneproprietari.service.proprietario;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -114,7 +115,7 @@ public class ProprietarioServiceImpl implements ProprietarioService {
 	}
 
 	@Override
-	public Long contaQuantiProprietariConAutomobileImmatricolataDal(int annoImmatricolazione) throws Exception {
+	public int contaQuantiProprietariConAutomobileImmatricolataDal(Date annoImmatricolazione) throws Exception {
 		EntityManager entityManager = EntityManagerUtil.getEntityManager();
 
 		try {
